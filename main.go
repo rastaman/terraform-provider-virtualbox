@@ -4,7 +4,7 @@
 package main
 
 import (
-	"./provider"
+	"github.com/rastaman/terraform-provider-virtualbox/provider"
 	"github.com/hashicorp/terraform/plugin"
 )
 
