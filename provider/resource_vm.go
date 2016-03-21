@@ -3,7 +3,7 @@ package provider
 import (
 	"fmt"
 	"github.com/dustin/go-humanize"
-	"github.com/hashicorp/terraform/helper/multierror"
+	"github.com/hashicorp/go-multierror"
 	"github.com/hashicorp/terraform/helper/resource"
 	"log"
 	"os"
@@ -13,7 +13,7 @@ import (
 	"sync"
 	"time"
 
-	vbox "github.com/ccll/go-virtualbox"
+	vbox "github.com/rastaman/go-virtualbox"
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
@@ -628,7 +628,7 @@ func WaitForVMAttribute(
 
 	stateConf := &resource.StateChangeConf{
 		Pending:        pending,
-		Target:         target,
+		Target:         []string{target},
 		Refresh:        newVMStateRefreshFunc(d, attribute, meta),
 		Timeout:        5 * time.Minute,
 		Delay:          delay,
